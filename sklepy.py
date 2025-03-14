@@ -6,6 +6,8 @@ def shopping(items, payment='karta', shop='sklep osiedlowy'):
     result = result + f"Metoda płatności: {payment}"
     return result
 
-items = ["cola", "whiskey", "lód"]
-text = shopping(items, 'card', 'small local shop')
-print(text)
+
+if __name__ == "__main__":
+
+    items = input("Lista zakupów z przecinkami:").split(', ')
+    print(shopping(items))
