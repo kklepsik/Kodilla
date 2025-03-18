@@ -10,26 +10,27 @@ while True:
             a = input("Podaj pierwszą liczbę: ")
             b = input("Podaj drugą liczbę: ")
 
-            if a.isdigit() and b.isdigit():
+            if a.replace('.', '', 1).isdigit() and b.replace('.', '', 1).isdigit():
 
                 a = float(a)
                 b = float(b)
+                
 
                 if operacja == 1:
                     logging.info(f"Dodajesz {a} i {b}")
-                    print(f"Wynik to: {int(a) + int(b)}")
+                    print(f"Wynik to: {a + b}")
 
                 elif operacja == 2:
                     logging.info(f"Odejmujesz {b} od {a}")
-                    print(f"Wynik to: {int(a) - int(b)}")
+                    print(f"Wynik to: {a - b}")
 
                 elif operacja == 3:
                     logging.info(f"Mnożysz {a} i {b}")
-                    print(f"Wynik to: {int(a) * int(b)}")
+                    print(f"Wynik to: {a * b}")
 
                 elif operacja == 4:
                     logging.info(f"Dzielisz {a} przez {b}")
-                    print(int(a) / int(b))
+                    print(f"Wynik to: {a / b}")
                 break
             else:
                 print("Wpisz liczby! ")
