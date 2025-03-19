@@ -14,7 +14,6 @@ while True:
 
                 a = float(a)
                 b = float(b)
-                
 
                 if operacja == 1:
                     logging.info(f"Dodajesz {a} i {b}")
