@@ -2,6 +2,8 @@ import logging
 
 logging.basicConfig(level = logging.INFO)
 
+#funkcja kalkulatora
+
 def kalkulator(operacja):
     while True:
         liczby = []
@@ -9,7 +11,7 @@ def kalkulator(operacja):
             while len(liczby) < 10:
                 liczba = input("Podaj liczby: ")
 
-                try:
+                try:                                                  #sprawdza czy operacja jest liczbą
                     liczby.append(float(liczba))
                 except:
                     if liczba == "":
@@ -56,7 +58,7 @@ def kalkulator(operacja):
             while len(liczby) < 2:
                 liczba = input("Podaj liczby: ")
 
-                try:
+                try:                                                              
                     liczby.append(float(liczba))
                 except:
                     if liczba == "":
@@ -67,7 +69,7 @@ def kalkulator(operacja):
             if liczby[1] != 0:
                 logging.info(f"Dzielisz {liczby[0]} przez {liczby[1]}")
                 wynik = liczby[0] / liczby[1]
-            else:
+            else:                                                                   #obsługa dzielenia przez 0
                 logging.critical(f"Nie dziel przez zero!!!")
                 liczby.clear()
                 print("Spóbuj jeszcze raz")
@@ -75,14 +77,14 @@ def kalkulator(operacja):
 
         return f"Oto Twój wynik mordeczko: {wynik}"
 
-
+#operacja wykonawcza
 
 while True:
     operacja = input("Podaj działanie, posługując się odpowiednią liczbą: 1 Dodawanie, 2 Odejmowanie, 3 Mnożenie, 4 Dzielenie: ")
     if int(operacja) in (1, 2, 3, 4):
         operacja = int(operacja) 
         wynik = print(kalkulator(operacja))
-        continue      
+        continue                                                            #jak chcesz by się zatrzymywał po wykonaniu operacji zmień na break
     else:
         logging.error("Niepoprawna liczba!")
 
