@@ -1,7 +1,11 @@
 print("Biblioteka filmów")
 
 import random
+import logging
 #from faker import Faker            #instalowałem ale nie działa, chcialbym dodac funkcje ktora uzupelnia biblioteke
+
+logging.basicConfig(level = logging.DEBUG)
+
 
 class pozycja():
     def __init__(self, tytul, rok, gatunek, liczba_odtworzen = 0):
@@ -46,15 +50,24 @@ def get_seriale():
     seriale = sorted([s for s in biblioteka if isinstance(s, serial)], key = lambda s: s.tytul)
     return seriale
 
-#def search():
-#    tytul = input("Podaj tytuł filmu lub serialu:")
-#    return [p for p in biblioteka if tytul in p.tytul]                      # a co jak tutaj chciałbym jeszcze dodać liczbę wyświetleń? i dalej funkcje czy chcesz obejrzec?
+def search():                                                  #jak poprawic te funkcje by uruchamiala funkcje play 
+    tytul = input("Podaj tytuł filmu lub serialu:")
+    ogladasz = input("Chcesz obejrzeć? Wpisz t/n: ")
+
+    for p in biblioteka:
+        if tytul in p.tytul:
+            if ogladasz == "t":
+                p.play()
+                print(f'Oglądasz {p.tytul} {p.rok}')
+            elif ogladasz == "n":
+                return None
+            
 
 def generate_views(biblioteka, ilosc_powtorzen = 1):
     for i in range (ilosc_powtorzen):
         pozycja = random.choice(biblioteka)
         pozycja.liczba_odtworzen += random.randint(1, 100)
-        print(f"Wyświetlono {pozycja.tytul} {pozycja.liczba_odtworzen} razy")
+        logging.debug(f"Wyświetlono {pozycja.tytul} {pozycja.liczba_odtworzen} razy")
 
 def top_pozycje():
     print('\n Top 3 pozycje: \n')
@@ -75,10 +88,10 @@ for element in biblioteka:
 for film in get_filmy():
     print(film)
 
-#for pozycja in search():
- #   print(pozycja)
+
 
 generate_views(biblioteka, 10)
 
 top_pozycje()
 
+search()
