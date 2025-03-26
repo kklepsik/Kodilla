@@ -4,4 +4,4 @@ sklepy = {'warzywniak': ['kartofle', 'marchew', 'koper'],
           }
 
 for sklep, produkty in sklepy.items():
-    print(f'Idę do {sklep} i kupuje: {produkty}')
+    print(f'Idę do {sklep} i kupuje: {', '.join(produkty)}')
